@@ -8,7 +8,7 @@ namespace Soft_Laba1
 {
     internal class Factory
     {
-        public NumberSystem createSystem(int numberSystem)
+        public static NumberSystem createSystem(int numberSystem)
         {
             if(numberSystem < 10)
             {
