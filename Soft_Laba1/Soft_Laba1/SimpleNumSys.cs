@@ -8,22 +8,22 @@ namespace Soft_Laba1
 {
     internal class SimpleNumSys : NumberSystem
     {
-        public override string Convert(int number, int numberSystem)
+        string NumberSystem.Convert(int number, int numberSystem)
         {
             string binaryNumber = "";
 
             while (true)
             {
-                binaryNumber += number % numberSystem;
+                binaryNumber = (number % numberSystem) + binaryNumber;
 
                 if (number / numberSystem == 0)
                 {
                     break;
                 }
-                number = number / numberSystem;
+                number /= numberSystem;
             }
 
-            return ReverseNumber(binaryNumber);
+            return binaryNumber;
         }
     }
 }

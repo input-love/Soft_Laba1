@@ -8,7 +8,7 @@ namespace Soft_Laba1
 {
     internal class ComplexNumSys : NumberSystem
     {
-        public override string Convert(int number, int numberSystem)
+        string NumberSystem.Convert(int number, int numberSystem)
         {
             string binaryNumber = "";
 
@@ -17,28 +17,30 @@ namespace Soft_Laba1
                 int i = number % numberSystem;
                 if (i > 9 && i < 26)
                 {
-                    binaryNumber += CharArray[i - 10];
+                    binaryNumber = CharArray[i - 10] + binaryNumber;
                 }
                 else
                 {
-                    binaryNumber += i;
+                    binaryNumber = i + binaryNumber;
                 }
 
                 if (number / numberSystem == 0)
                 {
                     break;
                 }
-                number = number / numberSystem;
+                number /= numberSystem;
             }
 
-            return ReverseNumber(binaryNumber);
+            return binaryNumber;
         }
 
         char[] CharArray = 
-            {'A', 'B', 'C', 'D', 'E', 
-             'F', 'G', 'H', 'I', 'J', 
-             'K', 'L', 'M', 'N', 'O', 
-             'P', 'Q', 'R', 'S', 'T', 
-             'U', 'V', 'W', 'X', 'Y', 'Z'};
+        {
+            'A', 'B', 'C', 'D', 'E', 
+            'F', 'G', 'H', 'I', 'J', 
+            'K', 'L', 'M', 'N', 'O', 
+            'P', 'Q', 'R', 'S', 'T', 
+            'U', 'V', 'W', 'X', 'Y', 'Z'
+        };
     }
 }

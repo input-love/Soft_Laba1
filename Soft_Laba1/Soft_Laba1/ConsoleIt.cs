@@ -43,15 +43,14 @@ namespace Soft_Laba1
 
         private int GetNumberСalcSystem()
         {
-            Console.WriteLine("Ввидете число, систему счисления которого хотите использовать:");
+            Console.WriteLine("В какую систему счисления перевести?:");
             int nymberSystem = Convert.ToInt32(Console.ReadLine());
             return nymberSystem;
         }
 
         private void CreateFactory(int numberSystem)
         {
-            Factory factory = new Factory();
-            NumberSystem = factory.createSystem(numberSystem);
+            NumberSystem = Factory.createSystem(numberSystem);
         }
 
         private string[] ConvertArray(int[] array, int numberSystem)
