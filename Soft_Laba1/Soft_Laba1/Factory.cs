@@ -8,16 +8,26 @@ namespace Soft_Laba1
 {
     internal class Factory
     {
-        public static NumberSystem createSystem(int numberSystem)
+            // Фабричный метод
+        //----------------------------------------------------------------
+        public static INumberSystem createSystem(int numberSystem)
         {
-            if(numberSystem < 10)
+            // От 2 до 10 - простая система счисления
+            // От 11 до 26 - сложная система счисления
+            // Можно расширять фабрику для более сложных систем счисления
+            if (numberSystem >= 2 && numberSystem <= 10)
             {
                 return new SimpleNumSys();
             }
-            else
+            else if (numberSystem >= 11 && numberSystem <= 26)
             {
                 return new ComplexNumSys();
             }
+            else
+            {
+                throw new Exception("Нет подходящего объекта");
+            }
         }
+        //----------------------------------------------------------------
     }
 }

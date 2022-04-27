@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Soft_Laba1
 {
-    internal class SimpleNumSys : NumberSystem
+    internal class SimpleNumSys : INumberSystem
     {
-        string NumberSystem.Convert(int number, int numberSystem)
+            // Перевод в систему счисления
+        //----------------------------------------------------------------
+        public string Convert(int number, int numberSystem)
         {
             string binaryNumber = "";
 
@@ -16,14 +18,17 @@ namespace Soft_Laba1
             {
                 binaryNumber = (number % numberSystem) + binaryNumber;
 
+                // Завершение работы цикла, если уже нельзя будет осуществить перевод
                 if (number / numberSystem == 0)
                 {
                     break;
                 }
+
                 number /= numberSystem;
             }
 
             return binaryNumber;
         }
+        //----------------------------------------------------------------
     }
 }

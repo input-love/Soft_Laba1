@@ -8,6 +8,8 @@ namespace Soft_Laba1
 {
     internal class ConsoleIt
     {
+            // Запуск консоли
+        //----------------------------------------------------------------
         public void StartConsole()
         {
             int count = GetCount();
@@ -20,7 +22,11 @@ namespace Soft_Laba1
 
             PrintArray(array, convertArray);
         }
+        //----------------------------------------------------------------
 
+            // Взаимодейсвие с пользователем
+        //----------------------------------------------------------------
+        // Запрос, сколько чисел пользователь хочет перевести в другую систему счисления
         private int GetCount()
         {
             Console.WriteLine("Сколько чисел вы хотите ввести?:");
@@ -28,6 +34,7 @@ namespace Soft_Laba1
             return count;
         }
 
+        // Запрос, занесение массива данных для дальнейшей обработки
         private int[] CreateArray(int count)
         {
             Console.WriteLine("Введите числа:");
@@ -41,18 +48,25 @@ namespace Soft_Laba1
             return array;
         }
 
+        // Запрос, в какую систему счисления перевести массив данных
         private int GetNumberСalcSystem()
         {
             Console.WriteLine("В какую систему счисления перевести?:");
             int nymberSystem = Convert.ToInt32(Console.ReadLine());
             return nymberSystem;
         }
+        //----------------------------------------------------------------
 
+            // Обращение к фабрике 
+        //----------------------------------------------------------------
         private void CreateFactory(int numberSystem)
         {
             NumberSystem = Factory.createSystem(numberSystem);
         }
+        //----------------------------------------------------------------
 
+            // Обработка массива данных (перевод в другую систему счисления)
+        //----------------------------------------------------------------
         private string[] ConvertArray(int[] array, int numberSystem)
         {
             string[] convertArray = new string[array.Length];
@@ -64,7 +78,10 @@ namespace Soft_Laba1
 
             return convertArray;
         }
+        //----------------------------------------------------------------
 
+            // Вывод в консоль
+        //----------------------------------------------------------------
         private void PrintArray(int[] array, string[] convertArray)
         {
             Console.WriteLine("Выходные данные:");
@@ -74,7 +91,11 @@ namespace Soft_Laba1
                 Console.WriteLine(array[i] + " : " + convertArray[i]);
             }
         }
+        //----------------------------------------------------------------
 
-        NumberSystem NumberSystem;
+            // Переменные
+        //----------------------------------------------------------------
+        INumberSystem NumberSystem;
+        //----------------------------------------------------------------
     }
 }

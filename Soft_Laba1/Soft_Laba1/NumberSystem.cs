@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Soft_Laba1
 {
-    interface NumberSystem
+    interface INumberSystem
     {
         string Convert(int number, int numberSystem);
     }

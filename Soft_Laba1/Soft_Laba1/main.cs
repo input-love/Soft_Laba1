@@ -6,7 +6,9 @@ namespace Soft_Laba1
     {
         static void Main(string[] args)
         {
+            // Создание консоли
             ConsoleIt console = new ConsoleIt();
+            // Вызов метода, который будет взаимодействовать с пользователем
             console.StartConsole();
         }
     }

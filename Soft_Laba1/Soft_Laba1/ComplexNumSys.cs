@@ -6,15 +6,19 @@ using System.Threading.Tasks;
 
 namespace Soft_Laba1
 {
-    internal class ComplexNumSys : NumberSystem
+    internal class ComplexNumSys : INumberSystem
     {
-        string NumberSystem.Convert(int number, int numberSystem)
+            // Перевод в систему счисления
+        //----------------------------------------------------------------
+        public string Convert(int number, int numberSystem)
         {
             string binaryNumber = "";
 
             while (true)
             {
                 int i = number % numberSystem;
+
+                // Если числа в промежутке от 10 до 25, то подставить соответствующую букву
                 if (i > 9 && i < 26)
                 {
                     binaryNumber = CharArray[i - 10] + binaryNumber;
@@ -24,16 +28,22 @@ namespace Soft_Laba1
                     binaryNumber = i + binaryNumber;
                 }
 
+                // Завершение работы цикла, если уже нельзя будет осуществить перевод
                 if (number / numberSystem == 0)
                 {
                     break;
                 }
+
                 number /= numberSystem;
             }
 
             return binaryNumber;
         }
+        //----------------------------------------------------------------
 
+            // Переменные
+        //----------------------------------------------------------------
+        // Массив для хранения вспомогательных данных для перевода в систему счисления
         char[] CharArray = 
         {
             'A', 'B', 'C', 'D', 'E', 
@@ -42,5 +52,6 @@ namespace Soft_Laba1
             'P', 'Q', 'R', 'S', 'T', 
             'U', 'V', 'W', 'X', 'Y', 'Z'
         };
+        //----------------------------------------------------------------
     }
 }
