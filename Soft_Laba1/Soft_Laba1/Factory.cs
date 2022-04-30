@@ -10,7 +10,7 @@ namespace Soft_Laba1
     {
             // Фабричный метод
         //----------------------------------------------------------------
-        public static INumberSystem createSystem(int numberSystem)
+        public INumberSystem createSystem(int numberSystem)
         {
             // От 2 до 10 - простая система счисления
             // От 11 до 26 - сложная система счисления

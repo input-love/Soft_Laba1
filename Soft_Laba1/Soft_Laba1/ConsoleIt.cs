@@ -12,15 +12,40 @@ namespace Soft_Laba1
         //----------------------------------------------------------------
         public void StartConsole()
         {
-            int count = GetCount();
-            int[] array = CreateArray(count);
-            int numberSystem = GetNumberСalcSystem();
+            int checkExit;
+            do
+            {
+                // Сколько чисел введет пользователь
+                int count = GetCount();
+                // Заполнение числами массива, для дальнейшей конвертации
+                int[] array = CreateArray(count);
+                // Используемая система счисления
+                int numberSystem = GetNumberСalcSystem();
 
-            CreateFactory(numberSystem);
-            
-            string[] convertArray = ConvertArray(array, numberSystem);
+                // Отлавливание ошибки
+                try
+                {
+                    // Обращение к фабрике, присваивание возращаемого значения
+                    NumberSystem = factory.createSystem(numberSystem);
+                }
+                catch (Exception ex)
+                {
+                    // Вывод ошибки
+                    Console.WriteLine(ex.Message);
+                    // Выход из программы
+                    return;
+                }
 
-            PrintArray(array, convertArray);
+                // Конвертация массива данных
+                string[] convertArray = ConvertArray(array, numberSystem);
+
+                // Вывод результируещего массива
+                PrintArray(array, convertArray);
+
+                // Переменная для завершения работы консоли
+                checkExit = GetCheckExit();
+
+            } while (checkExit != 2); // Проверка числа
         }
         //----------------------------------------------------------------
 
@@ -55,17 +80,17 @@ namespace Soft_Laba1
             int nymberSystem = Convert.ToInt32(Console.ReadLine());
             return nymberSystem;
         }
-        //----------------------------------------------------------------
 
-            // Обращение к фабрике 
-        //----------------------------------------------------------------
-        private void CreateFactory(int numberSystem)
+        // Запрос, завершение работы консоли
+        private int GetCheckExit()
         {
-            NumberSystem = Factory.createSystem(numberSystem);
+            PrintExit();
+            int check = Convert.ToInt32(Console.ReadLine());
+            return check;
         }
         //----------------------------------------------------------------
 
-            // Обработка массива данных (перевод в другую систему счисления)
+        // Обработка массива данных (перевод в другую систему счисления)
         //----------------------------------------------------------------
         private string[] ConvertArray(int[] array, int numberSystem)
         {
@@ -91,11 +116,22 @@ namespace Soft_Laba1
                 Console.WriteLine(array[i] + " : " + convertArray[i]);
             }
         }
+
+        // Меню, завершения работы консоли
+        private void PrintExit()
+        {
+            Console.WriteLine("-------------------------------------------");
+            Console.WriteLine("Завершить программу?:");
+            Console.WriteLine("1. Нет, продолжить работу");
+            Console.WriteLine("2. Да, завершить работу");
+            Console.WriteLine("-------------------------------------------");
+        }
         //----------------------------------------------------------------
 
-            // Переменные
+        // Переменные
         //----------------------------------------------------------------
         INumberSystem NumberSystem;
+        Factory factory = new Factory();
         //----------------------------------------------------------------
     }
 }
